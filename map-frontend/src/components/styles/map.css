@@ -1,0 +1,24 @@
+.map-wrap {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 77px); /* calculate height of the screen minus the heading */
+  }
+  
+  .map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+.mark-position-button {
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    z-index: 10;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+

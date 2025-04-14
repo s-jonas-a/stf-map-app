@@ -1,0 +1,48 @@
+.text-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-box textarea {
+    width: 90%;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.button-container button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+button:hover {background-color: #bec4c5;}
+
+.cancel-button {
+    background-color: #e7e7e754;
+    color: black;
+}
+
+.add-pics-button {
+    background-color: #e7e7e754;
+    color: black;
+}
+
+.submit-button {
+    background-color: #e7e7e754;
+    color: black;
+}

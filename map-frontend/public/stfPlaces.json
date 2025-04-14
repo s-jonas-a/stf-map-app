@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vålådalens Fjällstation",
+        "scalerank": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.9651, 63.1485]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stendalens Fjällstuga",
+        "scalerank": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.7399, 63.127]
+      }
+    }
+  ]
+}

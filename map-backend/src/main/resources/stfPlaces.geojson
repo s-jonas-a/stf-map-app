@@ -1,0 +1,75 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vålådalens Fjällstation",
+        "scalerank": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.9651,
+          63.1485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stendalens Fjällstuga",
+        "scalerank": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.7408,
+          63.1279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sylarnas Fjällstation",
+        "scalerank": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.2734,
+          63.0425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Blåhammarens Fjällstation",
+        "scalerank": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.1743,
+          63.1854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Storulvåns Fjällstation",
+        "scalerank": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.3623,
+          63.1691
+        ]
+      }
+    }
+  ]
+}
