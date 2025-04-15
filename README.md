@@ -2,6 +2,7 @@ Frontend install and run:
 ```shell
 cd map-frontend
 npm install
+npm i @maptiler/sdk
 npm run dev
 ```
 Backend run:
