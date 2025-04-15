@@ -1,12 +1,15 @@
-Frontend install and run:
+# Frontend install and run
 ```shell
 cd map-frontend
 npm install
 npm i @maptiler/sdk
 npm run dev
 ```
-Backend run:
+# Backend run
+
+The backend uses a postgresq database locally on your machine. This must be started before starting the backend service.
+
 ```shell
 cd map-backend
-./mvnw spring-boot:run
+DB_USERNAME=<user-name> DB_PASSWORD=<password> ./mvnw spring-boot:run
 ```
