@@ -1,4 +1,5 @@
 import * as maptilersdk from '@maptiler/sdk';
+import { Map } from '@maptiler/sdk';
 import axios from 'axios';
 import { UserMessage } from '../UserMessage';
 
@@ -25,6 +26,18 @@ interface GeoJSONFeature {
 interface GeoJSON {
     type: 'FeatureCollection';
     features: GeoJSONFeature[];
+}   
+
+export const loadMapApiKey = async (): Promise<string> => {
+    try {
+        const response = await axios.get('http://localhost:8080/api/map-key');
+        const apiKey = response.data.apiKey;
+        // maptilersdk.config.apiKey = apiKey;
+        return apiKey;
+    } catch (error) {
+        console.error("Error loading map-key:", error);
+        return '';
+    }
 }
 
 export const initializeMap = (mapContainer: HTMLElement | null, map_position: MapPosition): maptilersdk.Map => {
@@ -34,7 +47,7 @@ export const initializeMap = (mapContainer: HTMLElement | null, map_position: Ma
         throw new Error('Map container is not defined');
     }
     const startZoom = 7;
-    const map = new maptilersdk.Map({
+    const map = new Map({
         container: mapContainer,
         style: maptilersdk.MapStyle.OUTDOOR,
         center: [map_position.lng, map_position.lat],
@@ -50,7 +63,7 @@ export const initializeMap = (mapContainer: HTMLElement | null, map_position: Ma
     return map;
 };
 
-export const loadStfCabins = async (map: maptilersdk.Map): Promise<void> => {
+export const loadStfCabins = async (map: Readonly<Map>): Promise<void> => {
     try {
         let iconResponse = await fetch('./stf-icon.png');
         const blob = await iconResponse.blob();
@@ -98,7 +111,12 @@ export const loadStfCabins = async (map: maptilersdk.Map): Promise<void> => {
     }
 };
 
-export const loadUserMessages = async (map: Readonly<maptilersdk.Map>): Promise<void> => {
+export const loadUserMessages = async (map: Readonly<Map>): Promise<void> => {
+
+    
+    if (!(map instanceof Map)) {
+        throw new TypeError('Invalid map instance');
+    }
 
     try {
 
@@ -107,7 +125,7 @@ export const loadUserMessages = async (map: Readonly<maptilersdk.Map>): Promise<
         const imageBitmap = await createImageBitmap(blob);
 
         // Only load image once
-        if (!map.getImage('userMessage_image')) {
+        if (!map.hasImage('userMessage_image')) {
             map.addImage('userMessage_image', imageBitmap);
         }
 
@@ -160,7 +178,7 @@ export const loadUserMessages = async (map: Readonly<maptilersdk.Map>): Promise<
 
 
     } catch (error) {
-        console.error('Error saving message:', error);
+        console.error('Error loading user messages:', error);
     }
 }
 

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as maptilersdk from '@maptiler/sdk';
+import { Map, Marker } from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './styles/textBox.css'; // Import the CSS file
 import './styles/map.css'; // Import the CSS file
 import { loadUserMessages } from './helpers/mapHelpers.ts';
 
 interface PositionMarkerProps {
-    map: Readonly<maptilersdk.Map>;
+    map: Readonly<Map>;
 }
 
 const PositionMarker: React.FC<PositionMarkerProps> = ({ map }) => {
 
-    const [marker, setMarker] = useState<maptilersdk.Marker | null>(null);
+    const [marker, setMarker] = useState<Marker | null>(null);
     const [buttonText, setButtonText] = useState('Insert position marker');
 
     const handleClick = () => {
@@ -23,7 +24,7 @@ const PositionMarker: React.FC<PositionMarkerProps> = ({ map }) => {
             setButtonText('Insert position marker');
         } else {
 
-            const newMarker = new maptilersdk.Marker({
+            const newMarker = new Marker({
                 draggable: true,
             })
                 .setLngLat(map?.getCenter())
@@ -34,8 +35,7 @@ const PositionMarker: React.FC<PositionMarkerProps> = ({ map }) => {
                     .setText("Drag the marker to the wanted position\n" + "and add comments and pictures."))
                 .addTo(map);
 
-
-            newMarker.getElement().style.display = 'inline-block';
+            newMarker.getElement().style.display = 'run-in';
             newMarker.togglePopup();
             newMarker.on('dragend', () => {
                 showUserMessageInput(newMarker, map);
@@ -50,7 +50,7 @@ const PositionMarker: React.FC<PositionMarkerProps> = ({ map }) => {
     );
 };
 
-function showUserMessageInput(marker: maptilersdk.Marker, map: Readonly<maptilersdk.Map>): void {
+function showUserMessageInput(marker: Marker, map: Readonly<Map>): void {
     const textBox = document.createElement('div');
     textBox.className = 'text-box'; // Apply the CSS class
     textBox.innerHTML = `

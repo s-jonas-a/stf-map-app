@@ -1,9 +1,7 @@
 package com.example.map_backend.controller;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +30,18 @@ public class UserMessageController {
     public UserMessageController(UserMessageRepository userMessageRepository, JdbcTemplate jdbcTemplate) {
         this.userMessageRepository = userMessageRepository;
         this.jdbcTemplate = jdbcTemplate;
+    }
+    
+    // Currently key in plain text.
+    @Value("${map.api.key}")
+    private String apiKey;
+
+    @GetMapping("/map-key")
+    public Map<String, String> getApiKey() {
+        Map<String, String> response = new HashMap<>();
+        response.put("apiKey", apiKey);
+        System.out.println("Returned key: " + apiKey);
+        return response;
     }
 
     @GetMapping("/health")
